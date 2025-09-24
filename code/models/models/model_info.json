@@ -1,0 +1,17 @@
+{
+  "class_names": [
+    "pizza",
+    "sushi",
+    "hotdog",
+    "hamburger"
+  ],
+  "input_size": 128,
+  "model_architecture": "FoodCNN",
+  "num_classes": 4,
+  "display_names": {
+    "pizza": "Пицца",
+    "sushi": "Суши",
+    "hotdog": "Хот-дог",
+    "hamburger": "Гамбургер"
+  }
+}
