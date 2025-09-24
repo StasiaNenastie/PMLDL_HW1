@@ -1,0 +1,28 @@
+services:
+  api:
+    build: 
+      context: ./code/deployment/api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./code/models:/app/models
+    container_name: food-classifier-api-AI
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  app:
+    build:
+      context: ./code/deployment/app
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    container_name: food-classifier-app-AI
+    restart: unless-stopped
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - PYTHONUNBUFFERED=1
